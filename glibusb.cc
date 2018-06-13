@@ -18,14 +18,16 @@ bool safe_strtou32(const std::string &s, uint32_t *value) {
   CHECK_NOTNULL(value);
   std::stringstream stream(s);
   stream >> std::dec;
-  return stream >> *value;
+  stream >> *value;
+  return stream.good();
 }
 
 bool safe_strtou32_hex(const std::string &s, uint32_t *value) {
   CHECK_NOTNULL(value);
   std::stringstream stream(s);
   stream >> std::hex;
-  return stream >> *value;
+  stream >> *value;
+  return stream.good();
 }
 }
 

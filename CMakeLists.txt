@@ -5,8 +5,8 @@ enable_testing()
 
 find_package(Boost REQUIRED COMPONENTS thread date_time)	# need >= 1.48
 find_package(PkgConfig REQUIRED)
-#pkg_check_modules(LIBUSB REQUIRED libusb-1.0)
-pkg_check_modules(GFLAGS REQUIRED libgflags)
+pkg_check_modules(LIBUSB REQUIRED libusb-1.0)
+#pkg_check_modules(GFLAGS REQUIRED libgflags)
 pkg_check_modules(GLOG REQUIRED libglog)
 
 add_definitions("-std=c++11 -Wall -Wextra")
@@ -21,21 +21,22 @@ set(GTEST_SRCS
 include_directories(
   ${Boost_INCLUDE_DIRS}
   /usr/include/libusb-1.0
-  ${GFLAGS_INCLUDE_DIRS}
+  #${GFLAGS_INCLUDE_DIRS}
   ${GLOG_INCLUDE_DIRS}
   ${GTEST_INCLUDEDIR}
 )
 
 link_directories(
   ${Boost_LIBRARY_DIRS}
-  ${GFLAGS_LIBRARY_DIRS}
+  #${GFLAGS_LIBRARY_DIRS}
   ${GLOG_LIBRARY_DIRS}
 )
 
 set(LIBRARIES
   ${Boost_LIBRARIES}
   usb-1.0
-  ${GFLAGS_LIBRARIES}
+  #${GFLAGS_LIBRARIES}
+  gflags
   ${GLOG_LIBRARIES}
   pthread
 )
